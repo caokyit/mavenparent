@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+ <!--  <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+  <constant name="struts.devMode" value="true"/> -->
+  
+  <constant name="struts.devMode" value="true" />
+	<package name="default" namespace="/" extends="struts-default">
+
+        <!-- If no class attribute is specified the framework will assume success and 
+        render the result index.jsp -->
+        <!-- If no name value for the result node is specified the success value is the default -->
+		<action name="index">
+			<result>/index.jsp</result>
+		</action>
+		<!-- <action name="">
+			<result>/index.jsp</result>
+		</action> -->
+		<action name="addCustomerAction" 
+			class="org.Struts.Demo.example.CustomerAction" method="addCustomer" >
+		    <result name="success">customer.jsp</result>
+		</action>
+	
+		<action name="listCustomerAction" 
+			class="org.Struts.Demo.example.CustomerAction" method="listCustomer" >
+		    <result name="success">customer.jsp</result>
+		</action>
+
+		<action name="updateCustomerAction" 
+			class="org.Struts.Demo.example.CustomerAction" method="updateCustomer" >
+		    <result name="success">editCustomer.jsp</result>
+		</action>
+		
+		<action name="deleteCustomerAction" 
+			class="org.Struts.Demo.example.CustomerAction" method="deleteCustomer" >
+		    <result name="success" type ="redirectAction">listCustomerAction</result>
+		</action>
+		
+		<action name="saveCustomer"
+			class="org.Struts.Demo.example.CustomerAction" method="saveCustomer" >
+		    <result name="success" type ="redirectAction">listCustomerAction</result>
+		</action>
+		
+		
+		
+		<!-- If the URL is hello.action the call the execute method of class HelloWorldAction.
+		If the result returned by the execute method is success render the HelloWorld.jsp -->
+		<!-- <action name="hello" class="org.apache.struts.helloworld.action.HelloWorldAction" method="execute">
+			<result name="success">/HelloWorld.jsp</result>
+		</action> -->
+
+	</package>
+</struts>
